@@ -42,10 +42,12 @@ export default function Lanyard({
   transparent = true,
 }: LanyardProps) {
   return (
-    <div className="relative z-0 w-full h-screen flex justify-center items-center transform scale-100 origin-center">
+    <div className="relative z-0 w-full h-[60vh] md:h-screen flex justify-center items-center transform scale-100 origin-center lanyard-wrapper">
       <Canvas
+        className="lanyard-canvas w-full h-full"
+        style={{ background: "transparent" }}
         camera={{ position, fov }}
-        gl={{ alpha: transparent }}
+        gl={{ alpha: true }}
         onCreated={({ gl }) =>
           gl.setClearColor(new THREE.Color(0x000000), transparent ? 0 : 1)
         }

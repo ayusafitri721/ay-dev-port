@@ -2,17 +2,18 @@ import Image from "next/image";
 import Lanyard from "./components/Lanyard/Lanyard";
 import RotatingText from "./components/RotatingText/RotatingText";
 import SplitText from "./components/SplitText/SplitText";
+import BlurText from "./components/BlurText/BlurText";
 
 export default function Home() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-[#19222d]">
-      <div className="container border mx-auto h-screen">
-        <div className="grid grid-cols-12">
-          <div className="col-span-6">
-            <div className="flex items-center gap-2">
-              <h1 className="text-2xl text-white font-bold">
-                I'm Ready For Job
-              </h1>
+      <div className="max-w-7xl mx-auto h-screen px-6 md:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center h-full">
+          <div className="md:col-span-6">
+            <div className="flex items-center gap-3 mb-6">
+              <span className="inline-flex items-center px-3 py-1 rounded-full bg-[#C6F10E] text-black font-semibold text-sm">
+                I&apos;m Ready For Job
+              </span>
               <RotatingText
                 texts={[
                   "Web Design",
@@ -21,7 +22,7 @@ export default function Home() {
                   "Mobile Development",
                 ]}
                 mainClassName="px-2 sm:px-2 md:px-3 bg-[#C6F10E] text-black overflow-hidden py-0.5 sm:py-1 justify-center rounded-lg text-2xl font-bold inline-flex transition-all"
-                staggerFrom={"last"}
+                staggerFrom="last"
                 initial={{ y: "100%" }}
                 animate={{ y: 0 }}
                 exit={{ y: "-120%" }}
@@ -31,22 +32,43 @@ export default function Home() {
                 rotationInterval={2000}
               />
             </div>
-            <div>
+
+            <div className="flex flex-col items-start">
               <SplitText
                 text="I'm Ayu Safitri!"
-                className="text-6xl font-semibold text-center text-white"
-                delay={100}
+                className="text-6xl font-semibold text-start text-white mb-2"
+                delay={50}
                 duration={0.6}
                 ease="power3.out"
                 splitType="chars"
                 from={{ opacity: 0, y: 40 }}
                 to={{ opacity: 1, y: 0 }}
-                threshold={0.1}
+                threshold={0.2}
                 rootMargin="-50"
+              />
+              <SplitText
+                text="Full Stack Developer"
+                className="text-5xl font-semibold text-start text-[#C6F10E] mb-4"
+                delay={75}
+                duration={0.6}
+                ease="power3.out"
+                splitType="chars"
+                from={{ opacity: 0, y: 40 }}
+                to={{ opacity: 1, y: 0 }}
+                threshold={0.2}
+                rootMargin="-50"
+              />
+
+              <BlurText
+                text="Pelajar SMK jurusan Rekayasa Perangkat Lunak. Antusias dalam pemrograman—disiplin, bertanggung jawab, dan mampu bekerja secara mandiri maupun dalam tim. Bersemangat belajar dan terus mengasah keterampilan di bidang teknologi." 
+                delay={200}
+                animateBy="words"
+                direction="top"
+                className="text-lg hero-bio max-w-xl"
               />
             </div>
           </div>
-          <div className="col-span-6">
+          <div className="md:col-span-6 flex justify-center items-center">
             <Lanyard position={[0, 0, 12]} gravity={[0, -40, 0]} />
           </div>
         </div>

@@ -25,3 +25,32 @@ body {
     text-wrap: balance;
   }
 }
+
+/* Lanyard / three.js canvas tweaks: ensure transparent canvas and subtle shadow */
+.lanyard-wrapper {
+  position: relative;
+}
+.lanyard-wrapper::after {
+  content: '';
+  position: absolute;
+  inset: 14% 10%;
+  pointer-events: none;
+  z-index: -1;
+  border-radius: 18px;
+  background: radial-gradient(ellipse at center, rgba(0,0,0,0.65), rgba(0,0,0,0.15) 40%, transparent 60%);
+  filter: blur(28px);
+}
+
+/* Make sure the WebGL canvas is transparent and doesn't show any white default background */
+.lanyard-canvas,
+canvas {
+  background: transparent !important;
+  display: block;
+}
+
+/* Small utility for better bio text rhythm */
+.hero-bio {
+  color: #e9eef0;
+  line-height: 1.6;
+  word-break: break-word;
+}
