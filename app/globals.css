@@ -20,6 +20,11 @@ body {
   font-family: "Poppins", serif;
 }
 
+/* Smooth scrolling for in-page navigation */
+html {
+  scroll-behavior: smooth;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

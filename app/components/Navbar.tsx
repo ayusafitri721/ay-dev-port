@@ -6,26 +6,55 @@ import { usePathname } from "next/navigation";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
-  const [hash, setHash] = useState("");
   const pathname = usePathname();
 
   useEffect(() => {
     setMounted(true);
-    setHash(typeof window !== "undefined" ? window.location.hash : "");
-    const onHash = () => setHash(window.location.hash);
-    window.addEventListener("hashchange", onHash);
-    return () => window.removeEventListener("hashchange", onHash);
   }, []);
 
   const navItems = [
-    { label: "Tentang", href: "/about" },
-    { label: "Skills", href: "#skills" },
-    { label: "Projects", href: "#projects" },
-    { label: "Contact", href: "#contact" },
+    { label: "Tentang", href: "#tentang", id: "tentang" },
+    { label: "Skills", href: "#skills", id: "skills" },
+    { label: "Projects", href: "#projects", id: "projects" },
+    { label: "Contact", href: "#contact", id: "contact" },
   ];
 
   // Close on route change
   useEffect(() => setIsOpen(false), [pathname]);
+
+  const [activeId, setActiveId] = useState<string>("home");
+
+  // IntersectionObserver to set active nav link based on section in view
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const ids = ["home", "tentang", "skills", "projects", "contact"];
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveId(entry.target.id);
+          }
+        });
+      },
+      { root: null, rootMargin: "-40% 0px -40% 0px", threshold: 0 }
+    );
+
+    ids.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) obs.observe(el);
+    });
+
+    return () => obs.disconnect();
+  }, []);
+
+  const scrollToId = (id: string) => {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const header = document.querySelector("header");
+    const offset = header ? (header as HTMLElement).offsetHeight : 72;
+    const y = el.getBoundingClientRect().top + window.scrollY - offset;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  };
 
   return (
     <header className={`sticky top-0 z-50 transition-all duration-300 ${mounted ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2"}`}>
@@ -40,11 +69,15 @@ export default function Navbar() {
           {/* Desktop menu */}
           <div className="hidden lg:flex items-center gap-6">
             {navItems.map((it) => {
-              const isActive = it.href.startsWith("#") ? hash === it.href : pathname === it.href;
+              const isActive = activeId === it.id;
               return (
                 <a
                   key={it.href}
                   href={it.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    scrollToId(it.id);
+                  }}
                   className={`text-gray-300 hover:text-white hover:underline underline-offset-4 transition-all px-1 py-1 rounded ${
                     isActive ? "text-emerald-400 font-semibold border-b-2 border-emerald-500" : ""
                   } neon-glow-hover`}
@@ -54,9 +87,12 @@ export default function Navbar() {
               );
             })}
 
-            <Link href="#contact" className="ml-2 bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-full text-sm shadow-md hover:shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all">
+            <button
+              onClick={() => scrollToId("contact")}
+              className="ml-2 bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-full text-sm shadow-md hover:shadow-[0_0_20px_rgba(16,185,129,0.35)] transition-all"
+            >
               I'm Ready For Job
-            </Link>
+            </button>
           </div>
 
           {/* Mobile hamburger */}
@@ -99,14 +135,29 @@ export default function Navbar() {
 
             <div className="p-6 pt-4 flex flex-col gap-6">
               {navItems.map((it) => (
-                <a key={it.href} href={it.href} onClick={() => setIsOpen(false)} className="text-gray-200 text-lg hover:text-white transition-colors">
+                <a
+                  key={it.href}
+                  href={it.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+                    scrollToId(it.id);
+                  }}
+                  className="text-gray-200 text-lg hover:text-white transition-colors"
+                >
                   {it.label}
                 </a>
               ))}
 
-              <Link href="#contact" onClick={() => setIsOpen(false)} className="mt-4 inline-block bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-full shadow-md transition-all">
+              <button
+                onClick={() => {
+                  setIsOpen(false);
+                  scrollToId("contact");
+                }}
+                className="mt-4 inline-block bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2 rounded-full shadow-md transition-all"
+              >
                 I'm Ready For Job
-              </Link>
+              </button>
             </div>
           </aside>
         </>
