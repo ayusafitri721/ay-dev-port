@@ -54,3 +54,24 @@ canvas {
   line-height: 1.6;
   word-break: break-word;
 }
+
+/* Neon/glow utilities for navbar and links */
+.neon-glow-hover:hover {
+  text-shadow: 0 0 10px rgba(16,185,129,0.25);
+}
+
+.neon-ring {
+  box-shadow: 0 0 18px rgba(16,185,129,0.06);
+}
+
+/* Slight backdrop card for mobile drawer */
+.drawer-backdrop {
+  background: rgba(2,6,23,0.8);
+  backdrop-filter: blur(8px);
+}
+
+/* Neon heading utility */
+.neon-heading {
+  color: #e6fff2;
+  text-shadow: 0 0 20px rgba(16,185,129,0.12);
+}

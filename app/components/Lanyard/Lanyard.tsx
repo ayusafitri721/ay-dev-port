@@ -148,6 +148,11 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
     return (): void => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Refs for sway + hover lift
+  const rootGroup = useRef<any>(null);
+  const meshGroup = useRef<any>(null);
+  const baseMeshY = -1.2;
+
   useRopeJoint(fixed, j1, [[0, 0, 0], [0, 0, 0], 1]);
   useRopeJoint(j1, j2, [[0, 0, 0], [0, 0, 0], 1]);
   useRopeJoint(j2, j3, [[0, 0, 0], [0, 0, 0], 1]);
@@ -166,6 +171,22 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   }, [hovered, dragged]);
 
   useFrame((state, delta) => {
+    // Idle sway animation (gentle sinusoidal rotation) and hover lift
+    const t = state.clock.getElapsedTime();
+    const hoverMultiplier = hovered ? 2.0 : 1.0;
+    const swayAmp = 0.03 * hoverMultiplier; // radians
+    const swaySpeed = 1.5 * hoverMultiplier;
+    const sway = Math.sin(t * swaySpeed) * swayAmp;
+    if (rootGroup.current) {
+      // smooth interpolation to avoid jank
+      rootGroup.current.rotation.z += (sway - (rootGroup.current.rotation.z || 0)) * Math.min(1, delta * 8);
+    }
+
+    if (meshGroup.current) {
+      const targetY = baseMeshY + (hovered ? 0.12 : 0);
+      meshGroup.current.position.y += (targetY - meshGroup.current.position.y) * Math.min(1, delta * 6);
+    }
+
     if (dragged && typeof dragged !== "boolean") {
       vec.set(state.pointer.x, state.pointer.y, 0.5).unproject(state.camera);
       dir.copy(vec).sub(state.camera.position).normalize();
@@ -208,7 +229,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
 
   return (
     <>
-      <group position={[0, 4, 0]}>
+      <group ref={rootGroup} position={[0, 4, 0]}>
         <RigidBody
           ref={fixed}
           {...segmentProps}
@@ -250,6 +271,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
         >
           <CuboidCollider args={[0.8, 1.125, 0.01]} />
           <group
+            ref={meshGroup}
             scale={2.25}
             position={[0, -1.2, -0.05]}
             onPointerOver={() => hover(true)}
