@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import React from "react";
+import Image from "next/image";
 
 export default function AboutSection() {
   const containerVariants = {
@@ -26,8 +27,15 @@ export default function AboutSection() {
               className="rounded-2xl bg-gradient-to-br from-[#081226]/40 to-[#071226]/30 border border-gray-800 p-6"
             >
               <div className="flex items-center gap-4">
-                <div className="w-40 h-40 lg:w-48 lg:h-48 sm:w-44 sm:h-44 rounded-full bg-[#071226] border border-gray-800 flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(16,185,129,0.6)] transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_40px_rgba(16,185,129,0.8)] ring-1 ring-emerald-500/8">
-                  <span className="text-sm text-gray-400">avatar</span>
+                <div className="relative w-40 h-40 lg:w-48 lg:h-48 rounded-full border-2 border-emerald-500/50 overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#10b98180]">
+                  <Image
+                    src="/images/logo_ayu.png"
+                    alt="Ayu Safitri"
+                    fill
+                    className="object-cover"
+                    priority
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                  />
                 </div>
 
                 <div>
