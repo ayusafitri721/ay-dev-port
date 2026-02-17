@@ -2,6 +2,7 @@ import Lanyard from "./components/Lanyard/Lanyard";
 import RotatingText from "./components/RotatingText/RotatingText";
 import SplitText from "./components/SplitText/SplitText";
 import BlurText from "./components/BlurText/BlurText";
+import AboutSection from "./components/AboutSection";
 
 export default function Home() {
   return (
@@ -78,40 +79,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ABOUT / TENTANG */}
-      <section id="tentang" className="min-h-screen py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-            <div className="lg:col-span-1">
-              <div className="flex flex-col items-center gap-6">
-                <div className="w-44 h-44 rounded-full bg-[#071226] border border-gray-800 flex items-center justify-center">
-                  <span className="text-sm text-gray-400">avatar</span>
-                </div>
-                <div className="text-center">
-                  <h2 className="text-2xl font-bold neon-heading">Hi, I'm Ayu Safitri</h2>
-                  <p className="text-sm text-gray-300 mt-2">Full Stack Developer • SMK RPL</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="lg:col-span-2">
-              <div className="bg-[#071122] border border-gray-800 rounded-2xl p-8">
-                <h3 className="text-3xl font-bold neon-heading mb-3">Tentang Saya</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Pelajar SMK jurusan Rekayasa Perangkat Lunak yang super antusias di dunia pemrograman. Disiplin, bertanggung jawab, dan bisa bekerja
-                  secara mandiri maupun dalam tim. Semangat belajar tinggi, terus mengasah keterampilan di bidang teknologi yang terus berkembang. Saat ini fokus
-                  menjadi Full Stack Developer handal.
-                </p>
-                <div className="mt-6 text-gray-300 space-y-2">
-                  <p>Passion: membangun web apps yang bersih, cepat, dan ramah pengguna. Suka merancang UI/UX yang minimal namun efektif.</p>
-                  <p>Goal: bekerja di startup teknologi atau sebagai freelancer untuk proyek yang menantang dan berdampak.</p>
-                  <p>Fun fact: suka ngoding sambil denger musik K-pop dan menonton anime sebagai hiburan.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <AboutSection />
 
       {/* SKILLS */}
       <section id="skills" className="min-h-screen py-20">
