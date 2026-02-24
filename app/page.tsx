@@ -3,6 +3,7 @@ import RotatingText from "./components/RotatingText/RotatingText";
 import SplitText from "./components/SplitText/SplitText";
 import BlurText from "./components/BlurText/BlurText";
 import AboutSection from "./components/AboutSection";
+import SkillsCarousel from "./components/SkillsCarousel";
 
 export default function Home() {
   return (
@@ -81,30 +82,7 @@ export default function Home() {
 
       <AboutSection />
 
-      {/* SKILLS */}
-      <section id="skills" className="min-h-screen py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h3 className="text-3xl font-bold neon-heading mb-6">Skills</h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {[
-              "HTML",
-              "CSS",
-              "JavaScript",
-              "React",
-              "Next.js",
-              "Node.js",
-              "Tailwind",
-              "Git",
-            ].map((s) => (
-              <div key={s} className="bg-[#071122] border border-gray-800 rounded-lg p-4 flex items-center justify-center hover:scale-105 transition">
-                <div className="text-center">
-                  <div className="text-emerald-400 font-bold text-lg">{s}</div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <SkillsCarousel />
 
       {/* PROJECTS */}
       <section id="projects" className="min-h-screen py-20">

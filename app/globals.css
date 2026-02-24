@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -17,7 +17,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Poppins", serif;
+  font-family: "Outfit", sans-serif;
 }
 
 /* Smooth scrolling for in-page navigation */
@@ -79,4 +79,139 @@ canvas {
 .neon-heading {
   color: #e6fff2;
   text-shadow: 0 0 20px rgba(16,185,129,0.12);
+}
+
+.font-mono-space {
+  font-family: "Space Mono", monospace;
+}
+
+.skills-carousel {
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  cursor: grab;
+  touch-action: pan-x;
+  scrollbar-width: none;
+}
+
+.skills-carousel:active {
+  cursor: grabbing;
+}
+
+.skills-carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.skills-carousel.is-dragging {
+  scroll-snap-type: none;
+}
+
+.skills-card {
+  scroll-snap-align: start;
+}
+
+.skills-card-inner {
+  position: relative;
+  padding: 24px;
+  border-radius: 24px;
+  background: rgba(7, 17, 34, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.28);
+  transform: perspective(900px) rotateX(var(--rx)) rotateY(var(--ry));
+  transform-style: preserve-3d;
+  transition: transform 180ms ease, box-shadow 250ms ease, border-color 250ms ease;
+  overflow: hidden;
+}
+
+.skills-card:hover .skills-card-inner {
+  border-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+}
+
+.skills-card-glow {
+  position: absolute;
+  inset: -20%;
+  background: radial-gradient(
+    240px circle at var(--glow-x) var(--glow-y),
+    color-mix(in srgb, var(--card-accent) 45%, transparent),
+    transparent 70%
+  );
+  opacity: 0.65;
+  filter: blur(10px);
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+.skills-card-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.14), transparent 55%);
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.skills-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--card-accent) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--card-accent) 50%, transparent);
+  color: var(--card-accent);
+  box-shadow: 0 10px 25px color-mix(in srgb, var(--card-accent) 20%, transparent);
+}
+
+.skills-bar {
+  background: linear-gradient(
+    90deg,
+    var(--card-accent),
+    color-mix(in srgb, var(--card-accent) 40%, white)
+  );
+  transition: width 900ms ease;
+}
+
+.orb {
+  position: absolute;
+  width: 320px;
+  height: 320px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(16, 185, 129, 0.45), transparent 65%);
+  filter: blur(30px);
+  opacity: 0.35;
+  animation: orb-drift 18s ease-in-out infinite;
+}
+
+.orb-1 {
+  top: -120px;
+  left: -80px;
+}
+
+.orb-2 {
+  bottom: -160px;
+  right: -120px;
+  animation-delay: -6s;
+  background: radial-gradient(circle, rgba(123, 111, 255, 0.35), transparent 65%);
+}
+
+.orb-3 {
+  top: 30%;
+  right: 15%;
+  width: 240px;
+  height: 240px;
+  animation-delay: -12s;
+  background: radial-gradient(circle, rgba(255, 111, 176, 0.3), transparent 65%);
+}
+
+@keyframes orb-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(30px, -20px) scale(1.05);
+  }
+  100% {
+    transform: translate(-20px, 15px) scale(1);
+  }
 }
