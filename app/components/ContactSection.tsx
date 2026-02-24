@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import React from "react";
 
 const marqueeItems = [
@@ -12,12 +13,12 @@ const marqueeItems = [
 ];
 
 export default function ContactSection() {
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: {},
     show: { transition: { staggerChildren: 0.12 } },
   };
 
-  const itemVariants = {
+  const itemVariants: Variants = {
     hidden: { opacity: 0, y: 18 },
     show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
   };
