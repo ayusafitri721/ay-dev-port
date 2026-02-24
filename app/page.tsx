@@ -5,6 +5,7 @@ import BlurText from "./components/BlurText/BlurText";
 import AboutSection from "./components/AboutSection";
 import SkillsCarousel from "./components/SkillsCarousel";
 import ProjectsSection from "./components/ProjectsSection";
+import ContactSection from "./components/ContactSection";
 
 export default function Home() {
   return (
@@ -87,23 +88,7 @@ export default function Home() {
 
       <ProjectsSection />
 
-      {/* CONTACT */}
-      <section id="contact" className="min-h-screen py-20">
-        <div className="max-w-4xl mx-auto px-6">
-          <h3 className="text-3xl font-bold neon-heading mb-4">Contact</h3>
-          <p className="text-gray-300 mb-6">Interested in collaborating? Send me a message or reach out via email.</p>
-          <div className="bg-[#071122] border border-gray-800 rounded-xl p-6">
-            <form className="grid grid-cols-1 gap-4">
-              <input placeholder="Your name" className="bg-transparent border border-gray-700 rounded px-4 py-2 text-white" />
-              <input placeholder="Email" className="bg-transparent border border-gray-700 rounded px-4 py-2 text-white" />
-              <textarea placeholder="Message" className="bg-transparent border border-gray-700 rounded px-4 py-2 text-white min-h-[120px]" />
-              <div>
-                <button className="bg-emerald-500 hover:bg-emerald-600 text-black px-4 py-2 rounded-full font-semibold">Send Message</button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </section>
+      <ContactSection />
     </div>
   );
 }

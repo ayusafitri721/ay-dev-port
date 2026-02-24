@@ -121,6 +121,22 @@ canvas {
   }
 }
 
+@keyframes marquee-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+  animation: marquee-left 22s linear infinite;
+}
+
 .skills-carousel {
   scroll-snap-type: x mandatory;
   -webkit-overflow-scrolling: touch;
