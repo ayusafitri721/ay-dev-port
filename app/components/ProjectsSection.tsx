@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
 import React from "react";
 
 const projects = [
@@ -45,12 +44,12 @@ const projects = [
 
 const heights = ["h-[340px]", "h-[240px]", "h-[180px]"];
 
-const containerVariants: Variants = {
+const containerVariants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12 } },
 };
 
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };

@@ -1,7 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import type { Variants } from "framer-motion";
 
 type SkillItem = {
   name: string;
@@ -54,12 +53,12 @@ const skillGroups: SkillGroup[] = [
   },
 ];
 
-const containerVariants: Variants = {
+const containerVariants = {
   hidden: {},
   show: { transition: { staggerChildren: 0.12 } },
 };
 
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { opacity: 0, y: 14 },
   show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
 };
