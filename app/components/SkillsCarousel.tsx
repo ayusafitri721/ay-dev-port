@@ -285,7 +285,13 @@ export default function SkillsCarousel() {
       <div className="max-w-6xl mx-auto px-6 relative">
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-10">
           <div>
-            <h3 className="text-3xl font-bold neon-heading mb-2">Skills</h3>
+            <div className="flex items-center gap-2 font-mono-space text-[0.65rem] text-[#4fffce] tracking-[0.2em] uppercase mb-3">
+              <span className="inline-block w-[5px] h-[5px] rounded-full bg-[#4fffce] shadow-[0_0_6px_#4fffce] [animation:blink_2s_infinite]" />
+              <span>EXPERTISE</span>
+            </div>
+            <h3 className="text-4xl md:text-5xl font-bold text-white mb-2">
+              Skills<span className="text-[#4fffce]">.</span>
+            </h3>
             <p className="text-gray-300 max-w-2xl">
               Fokus pada pengembangan web modern dengan prioritas pada performa,
               UI yang rapi, dan pengalaman pengguna yang konsisten.
@@ -421,6 +427,19 @@ export default function SkillsCarousel() {
           ))}
         </div>
       </div>
+      <style jsx>{`
+        @keyframes blink {
+          0% {
+            opacity: 1;
+          }
+          50% {
+            opacity: 0.2;
+          }
+          100% {
+            opacity: 1;
+          }
+        }
+      `}</style>
     </section>
   );
 }
