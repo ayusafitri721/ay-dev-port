@@ -25,6 +25,7 @@ import * as THREE from "three";
 // replace with your own imports, see the usage snippet for details
 const cardGLB = "/assets/lanyard/card.glb";
 const lanyard = "/assets/lanyard/lanyard.png";
+const cardPhoto = "/images/photo.jpeg";
 
 extend({ MeshLineGeometry, MeshLineMaterial });
 
@@ -119,7 +120,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   };
 
   const { nodes, materials } = useGLTF(cardGLB) as any;
-  const texture = useTexture(lanyard);
+  const [strapTexture, cardTexture] = useTexture([lanyard, cardPhoto]);
   const [curve] = useState(
     () =>
       new THREE.CatmullRomCurve3([
@@ -225,7 +226,13 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
   });
 
   curve.curveType = "chordal";
-  texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+  strapTexture.wrapS = strapTexture.wrapT = THREE.RepeatWrapping;
+
+  useEffect(() => {
+    cardTexture.flipY = false;
+    cardTexture.colorSpace = THREE.SRGBColorSpace;
+    cardTexture.needsUpdate = true;
+  }, [cardTexture]);
 
   return (
     <>
@@ -291,7 +298,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           >
             <mesh geometry={nodes.card.geometry}>
               <meshPhysicalMaterial
-                map={materials.base.map}
+                map={cardTexture}
                 map-anisotropy={16}
                 clearcoat={1}
                 clearcoatRoughness={0.15}
@@ -315,7 +322,7 @@ function Band({ maxSpeed = 50, minSpeed = 0 }: BandProps) {
           depthTest={false}
           resolution={isSmall ? [1000, 2000] : [1000, 1000]}
           useMap
-          map={texture}
+          map={strapTexture}
           repeat={[-4, 1]}
           lineWidth={1}
         />
