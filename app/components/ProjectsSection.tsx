@@ -9,36 +9,42 @@ const projects = [
     year: "2025",
     desc: "Personal brand site dengan animasi halus dan performa cepat.",
     tags: ["Next.js", "Tailwind", "GSAP"],
+    image: "/assets/projects/app_project_1.jpeg",
   },
   {
     title: "School LMS",
     year: "2024",
     desc: "Platform belajar sederhana dengan manajemen kelas dan tugas.",
     tags: ["React", "Node.js", "Postgres"],
+    image: "/assets/projects/web_project_1.jpeg",
   },
   {
     title: "Cafe Ordering",
     year: "2024",
     desc: "Aplikasi pemesanan menu yang ramah mobile untuk kasir.",
     tags: ["Next.js", "Prisma", "Vercel"],
+    image: "/assets/projects/web_project_3.jpeg",
   },
   {
     title: "Event Landing",
     year: "2023",
     desc: "Landing page event dengan pendaftaran dan email capture.",
     tags: ["HTML", "CSS", "JS"],
+    image: "/assets/projects/app_project_2.jpeg",
   },
   {
     title: "Habit Tracker",
     year: "2023",
     desc: "Dashboard kebiasaan harian dengan visual progress.",
     tags: ["React", "Chart", "Firebase"],
+    image: "/assets/projects/web_project_4.jpeg",
   },
   {
     title: "Inventory App",
     year: "2022",
     desc: "Manajemen stok untuk UMKM dengan laporan mingguan.",
     tags: ["Node.js", "Express", "MongoDB"],
+    image: "/assets/projects/web_project_2.jpeg",
   },
 ];
 
@@ -112,6 +118,13 @@ export default function ProjectsSection() {
               >
                 <div className="group rounded-[18px] border border-white/10 bg-white/5 backdrop-blur-xl overflow-hidden transition-shadow duration-300 hover:shadow-[0_0_24px_rgba(79,255,206,0.25)]">
                   <div className={`relative ${height} overflow-hidden`}>
+                    {project.image ? (
+                      <img
+                        src={project.image}
+                        alt={project.title}
+                        className="absolute inset-0 w-full h-full object-cover"
+                      />
+                    ) : null}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-white/0 to-white/10" />
                     <div
                       className="absolute inset-0 opacity-60"
