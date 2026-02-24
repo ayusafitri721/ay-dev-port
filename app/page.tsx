@@ -4,6 +4,7 @@ import SplitText from "./components/SplitText/SplitText";
 import BlurText from "./components/BlurText/BlurText";
 import AboutSection from "./components/AboutSection";
 import SkillsCarousel from "./components/SkillsCarousel";
+import ProjectsSection from "./components/ProjectsSection";
 
 export default function Home() {
   return (
@@ -84,23 +85,7 @@ export default function Home() {
 
       <SkillsCarousel />
 
-      {/* PROJECTS */}
-      <section id="projects" className="min-h-screen py-20">
-        <div className="max-w-6xl mx-auto px-6">
-          <h3 className="text-3xl font-bold neon-heading mb-6">Projects</h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {[1, 2, 3].map((i) => (
-              <div key={i} className="bg-[#071122] border border-gray-800 rounded-xl p-6 hover:shadow-[0_10px_30px_rgba(16,185,129,0.06)] transition">
-                <div className="text-xl font-semibold">Project {i}</div>
-                <p className="text-gray-300 mt-2">Short description of the project with tech used and role.</p>
-                <div className="mt-4">
-                  <a className="text-emerald-400 hover:underline" href="#">View</a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <ProjectsSection />
 
       {/* CONTACT */}
       <section id="contact" className="min-h-screen py-20">

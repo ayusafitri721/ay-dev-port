@@ -1,15 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Outfit:wght@200;300;400;500;600;700;800&family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 :root {
-  --background: #ffffff;
+  --background: #080e1a;
   --foreground: #171717;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #080e1a;
     --foreground: #ededed;
   }
 }
@@ -83,6 +83,42 @@ canvas {
 
 .font-mono-space {
   font-family: "Space Mono", monospace;
+}
+
+.font-serif-instrument {
+  font-family: "Instrument Serif", serif;
+}
+
+.font-syne {
+  font-family: "Syne", sans-serif;
+}
+
+.about-divider {
+  position: relative;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+}
+
+.about-divider::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  left: 0;
+  width: 100%;
+  height: 30%;
+  background: linear-gradient(180deg, transparent, #4fffce, transparent);
+  box-shadow: 0 0 18px rgba(79, 255, 206, 0.45);
+  animation: divider-glow 3.2s linear infinite;
+}
+
+@keyframes divider-glow {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(320%);
+  }
 }
 
 .skills-carousel {

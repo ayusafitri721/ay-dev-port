@@ -2,154 +2,164 @@
 
 import { motion } from "framer-motion";
 import React from "react";
-import Image from "next/image";
 
 export default function AboutSection() {
   const containerVariants = {
     hidden: {},
-    show: { transition: { staggerChildren: 0.15, staggerDirection: 1 } },
+    show: { transition: { staggerChildren: 0.15 } },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 12 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: "easeOut" } },
+    hidden: { opacity: 0, y: 18 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
   };
 
   return (
-    <section id="tentang" className="min-h-screen py-20">
-      <div className="max-w-6xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
-          <div className="lg:col-span-5 flex flex-col gap-6 items-center lg:items-start text-center lg:text-left">
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6 }}
-              className="rounded-2xl bg-gradient-to-br from-[#081226]/40 to-[#071226]/30 border border-gray-800 p-6"
-            >
-              <div className="flex items-center gap-4">
-                <div className="relative w-40 h-40 lg:w-48 lg:h-48 rounded-full border-2 border-emerald-500/50 overflow-hidden transition-transform duration-300 hover:scale-105 hover:shadow-[0_0_25px_#10b98180]">
-                  <Image
-                    src="/images/logo_ayu.png"
-                    alt="Ayu Safitri"
-                    fill
-                    className="object-cover"
-                    priority
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
+    <section id="tentang" className="relative">
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute -top-28 left-8 w-[420px] h-[420px] rounded-full bg-[#4fffce] opacity-20 blur-[120px]" />
+        <div className="absolute bottom-[-120px] right-[-40px] w-[460px] h-[460px] rounded-full bg-[#7b6fff] opacity-20 blur-[120px]" />
+      </div>
 
-                <div>
-                  <h2 className="text-2xl font-bold neon-heading">Ayu Safitri</h2>
-                  <p className="text-sm text-gray-300 mt-1">Full Stack Developer • SMK RPL</p>
-                </div>
-              </div>
-
-              <div className="mt-4 text-gray-300">
-                <div className="max-w-prose mx-auto lg:mx-0 leading-7 text-justify lg:text-left">
-                  <p>
-                    Pelajar SMK jurusan Rekayasa Perangkat Lunak. Antusias dalam pemrograman — disiplin, bertanggung jawab,
-                    dan nyaman bekerja secara mandiri maupun tim. Fokus mengasah kemampuan Full Stack (front-end & back-end)
-                    serta pengalaman praktis membangun aplikasi yang cepat dan aksesibel.
-                  </p>
-                </div>
-              </div>
+      <motion.div
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true, amount: 0.3 }}
+        className="relative max-w-[1100px] mx-auto px-6 md:px-16 py-20"
+      >
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto_1fr] gap-10 items-start">
+          <div className="flex flex-col gap-8">
+            <motion.div variants={itemVariants} className="flex items-center gap-3">
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#4fffce]/70 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#4fffce]" />
+              </span>
+              <span className="font-mono-space text-[#4fffce] tracking-[0.2em] text-sm uppercase">
+                About Me
+              </span>
             </motion.div>
 
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.15, duration: 0.6 }}
-              className="grid grid-cols-3 gap-4 w-full"
-            >
+            <motion.div variants={itemVariants}>
+              <h2 className="text-4xl md:text-5xl font-serif-instrument text-white leading-tight">
+                Ayu <span className="italic text-[#4fffce]">Safitri</span>
+              </h2>
+              <p className="mt-3 text-sm text-slate-400 font-mono-space uppercase tracking-[0.2em]">
+                Full Stack Developer
+              </p>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="relative pl-5">
+              <div className="absolute left-0 top-1 bottom-1 w-px bg-gradient-to-b from-[#4fffce] to-transparent" />
+              <p className="text-slate-300 leading-7">
+                Pelajar SMK jurusan Rekayasa Perangkat Lunak yang fokus membangun
+                aplikasi web modern. Menyukai UI yang rapi, performa cepat, dan
+                alur kerja kolaboratif yang jelas.
+              </p>
+            </motion.div>
+
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-4">
+              <a
+                href="#projects"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#4fffce] text-black font-medium transition hover:brightness-110"
+              >
+                Lihat Projects
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full border border-white/20 text-white/80 font-medium transition hover:border-[#4fffce] hover:text-white"
+              >
+                Hubungi Saya
+              </a>
+            </motion.div>
+          </div>
+
+          <div className="hidden lg:block h-full">
+            <div className="about-divider h-full" />
+          </div>
+
+          <div className="flex flex-col gap-10">
+            <motion.div variants={itemVariants} className="space-y-6">
               {[
-                { label: "Experience", value: "1+ yrs" },
-                { label: "Projects", value: "10+" },
-                { label: "Languages", value: "JS" },
-              ].map((s) => (
+                {
+                  value: "1",
+                  label: "Years Experience",
+                  desc: "Mengerjakan project web modern.",
+                },
+                {
+                  value: "12",
+                  label: "Projects Delivered",
+                  desc: "MVP, landing page, dan portfolio.",
+                },
+                {
+                  value: "4",
+                  label: "Core Stacks",
+                  desc: "React, Next.js, Node.js, Tailwind.",
+                },
+              ].map((stat) => (
                 <div
-                  key={s.label}
-                  className="bg-[#071122] border border-gray-800 rounded-lg p-4 text-center transition-all duration-300 hover:scale-105 hover:bg-emerald-800/50 hover:border-emerald-400/70 hover:shadow-[0_10px_30px_rgba(16,185,129,0.12)]"
+                  key={stat.label}
+                  className="group flex items-start gap-6 transition-transform duration-300 hover:translate-x-2"
                 >
-                  <div className="text-emerald-400 font-bold text-xl">{s.value}</div>
-                  <div className="text-xs text-gray-400 mt-1">{s.label}</div>
+                  <div className="font-serif-instrument text-4xl text-white leading-none transition-colors duration-300 group-hover:text-[#4fffce]">
+                    {stat.value}
+                    <sup className="text-[#4fffce] text-lg font-serif-instrument">+</sup>
+                  </div>
+                  <div>
+                    <div className="text-white font-semibold">{stat.label}</div>
+                    <div className="text-sm text-slate-400">{stat.desc}</div>
+                  </div>
                 </div>
               ))}
             </motion.div>
-          </div>
 
-          <div className="lg:col-span-7">
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true, amount: 0.3 }}
-              className="bg-[#071122] border border-gray-800 rounded-2xl p-8 lg:p-10 shadow-[0_10px_30px_rgba(16,185,129,0.04)]"
-            >
-              <motion.div variants={itemVariants} className="mb-2">
-                <h3 className="text-3xl font-bold neon-heading">Tentang Saya</h3>
-                <div className="mt-3 h-1 w-24 bg-emerald-400 rounded opacity-80" />
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="prose prose-invert max-w-prose text-gray-300 leading-7">
-                <p>
-                  Saya suka membangun antarmuka yang bersih dan logis, serta menghubungkannya dengan layanan backend yang
-                  handal. Saya percaya bahwa aplikasi yang baik adalah gabungan antara UX yang dipikirkan matang dan kode yang
-                  terstruktur.
-                </p>
-
-                <p>
-                  Saat ini saya mengerjakan proyek-proyek kecil yang memungkinkan saya mengasah React, Next.js, dan
-                  pengelolaan state. Saya terbiasa dengan Tailwind CSS, membuat komponen yang dapat dipakai ulang, dan
-                  menerapkan praktik terbaik untuk performa.
-                </p>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="mt-6 grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="bg-[#071226] border border-gray-800 rounded-lg p-4 transition-transform duration-300 hover:translate-x-2 hover:scale-105 hover:shadow-[0_10px_30px_rgba(16,185,129,0.06)]">
-                  <div className="flex items-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                      <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M7.5 7.5 4.5 12l3 4.5M16.5 7.5 19.5 12l-3 4.5" />
-                    </svg>
-                    <div>
-                      <div className="text-sm text-gray-400">Passion</div>
-                      <div className="text-emerald-400 font-semibold">Full Stack Development</div>
-                      <div className="text-xs text-gray-400 mt-1">Membangun aplikasi end-to-end dengan fokus clean code & performa tinggi</div>
+            <motion.div variants={itemVariants} className="space-y-4">
+              {[
+                {
+                  no: "01",
+                  title: "Clarity First",
+                  desc: "Brief rapi, scope jelas, eksekusi cepat.",
+                },
+                {
+                  no: "02",
+                  title: "Crafted UI",
+                  desc: "Detail tipografi & spacing konsisten.",
+                },
+                {
+                  no: "03",
+                  title: "Reliable Delivery",
+                  desc: "Iterasi kecil, feedback, shipping.",
+                },
+              ].map((item) => (
+                <div key={item.no} className="flex items-start gap-4">
+                  <div className="font-mono-space text-sm text-[#4fffce]">
+                    {item.no}
+                  </div>
+                  <div>
+                    <div className="text-white font-medium">{item.title}</div>
+                    <div className="text-sm text-slate-400 font-mono-space">
+                      {item.desc}
                     </div>
                   </div>
                 </div>
+              ))}
+            </motion.div>
 
-                <div className="bg-[#071226] border border-gray-800 rounded-lg p-4 transition-transform duration-300 hover:translate-x-2 hover:scale-105 hover:shadow-[0_10px_30px_rgba(16,185,129,0.06)]">
-                  <div className="flex items-center gap-3">
-                    <svg xmlns="http://www.w3.org/2000/svg" className="w-8 h-8 text-emerald-400" fill="none" viewBox="0 0 24 24" aria-hidden="true">
-                      <path stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" d="M3 13l4-4 4 4 8-8M7 9v8a2 2 0 0 0 2 2h8" />
-                    </svg>
-                    <div>
-                      <div className="text-sm text-gray-400">Goal</div>
-                      <div className="text-emerald-400 font-semibold">Bekerja pada produk nyata & membangun portofolio solid</div>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-
-              <motion.div variants={itemVariants} className="mt-8 flex flex-col sm:flex-row gap-4">
-                <a
-                  href="#projects"
-                  className="inline-block bg-emerald-500 hover:bg-emerald-600 text-black px-6 py-3 rounded-full text-base lg:text-lg font-medium transform transition-all duration-200 hover:scale-105 shadow-[0_12px_40px_rgba(16,185,129,0.12)] hover:shadow-emerald-600/60 ring-2 ring-emerald-500/30 ring-offset-2 ring-offset-slate-950"
-                >
-                  Lihat Projects
-                </a>
-
-                <a
-                  href="#contact"
-                  className="inline-block border border-gray-700 px-6 py-3 rounded-full text-gray-300 hover:text-white text-base lg:text-lg font-medium transition-all duration-200 hover:scale-105 shadow-[0_12px_40px_rgba(16,185,129,0.08)] hover:shadow-emerald-600/60 ring-2 ring-emerald-500/30 ring-offset-2 ring-offset-slate-950"
-                >
-                  Hubungi Saya
-                </a>
-              </motion.div>
+            <motion.div variants={itemVariants} className="flex flex-wrap gap-2">
+              {["Next.js", "React", "Node.js", "Tailwind", "Figma", "Git"].map(
+                (tech) => (
+                  <span
+                    key={tech}
+                    className="px-3 py-1 rounded-full border border-white/15 text-xs text-white/70 font-mono-space transition hover:border-[#4fffce] hover:text-[#4fffce]"
+                  >
+                    {tech}
+                  </span>
+                )
+              )}
             </motion.div>
           </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
