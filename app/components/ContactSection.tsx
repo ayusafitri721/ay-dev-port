@@ -95,13 +95,25 @@ export default function ContactSection() {
             </div>
             <div className="border-t border-white/10">
               {[
-                { label: "Email", value: "ayusafitri@email.com" },
-                { label: "LinkedIn", value: "linkedin.com/in/ayusafitri" },
-                { label: "GitHub", value: "github.com/ayusafitri" },
+                {
+                  label: "Email",
+                  value: "ayusafitri2789@gmail.com",
+                  href: "mailto:ayusafitri2789@gmail.com",
+                },
+                {
+                  label: "LinkedIn",
+                  value: "linkedin.com/in/ayusafitri21",
+                  href: "https://www.linkedin.com/in/ayusafitri21/",
+                },
+                {
+                  label: "GitHub",
+                  value: "github.com/ayusafitri721",
+                  href: "https://github.com/ayusafitri721",
+                },
               ].map((item) => (
                 <a
                   key={item.label}
-                  href="#contact"
+                  href={item.href}
                   className="group flex items-center justify-between py-4 border-t border-white/10 last:border-b transition-all hover:translate-x-2 hover:text-[#4fffce]"
                 >
                   <div>
