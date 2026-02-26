@@ -6,10 +6,10 @@ import React from "react";
 
 const projects = [
   {
-    title: "Portfolio Website",
+    title: "Finance Tracker App",
     year: "2025",
-    desc: "Personal brand site dengan animasi halus dan performa cepat.",
-    tags: ["Next.js", "Tailwind", "GSAP"],
+    desc: "Aplikasi keuangan personal untuk tracking pemasukan & pengeluaran harian dengan visualisasi data yang intuitif.",
+    tags: ["Kotlin", "Room DB", "ViewModel", "LiveData"],
     image: "/assets/projects/app_project_1.jpeg",
   },
   {
