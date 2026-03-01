@@ -24,6 +24,9 @@ const cards: SkillCard[] = [
       { name: "HTML", level: 90 },
       { name: "CSS", level: 85 },
       { name: "JavaScript", level: 80 },
+      { name: "TypeScript", level: 75 },
+      { name: "Responsive Design", level: 82 },
+      { name: "Web Performance", level: 70 },
     ],
   },
   {
@@ -31,9 +34,12 @@ const cards: SkillCard[] = [
     accent: "#7b6fff",
     icon: Layers,
     items: [
-      { name: "React", level: 80 },
-      { name: "Next.js", level: 75 },
-      { name: "Tailwind", level: 85 },
+      { name: "React.js", level: 80 },
+      { name: "React Native", level: 72 },
+      { name: "Kotlin", level: 70 },
+      { name: "Flutter & Dart", level: 68 },
+      { name: "Tailwind CSS", level: 82 },
+      { name: "TypeScript", level: 70 },
     ],
   },
   {
@@ -41,9 +47,12 @@ const cards: SkillCard[] = [
     accent: "#ff6fb0",
     icon: Server,
     items: [
-      { name: "Node.js", level: 70 },
-      { name: "REST API", level: 70 },
-      { name: "Database", level: 65 },
+      { name: "Next.js", level: 75 },
+      { name: "Laravel", level: 72 },
+      { name: "PHP Native", level: 70 },
+      { name: "Express.js", level: 68 },
+      { name: "MySQL", level: 72 },
+      { name: "Go", level: 60 },
     ],
   },
   {
@@ -51,9 +60,12 @@ const cards: SkillCard[] = [
     accent: "#ffce4f",
     icon: Wrench,
     items: [
-      { name: "Git", level: 75 },
-      { name: "Figma", level: 60 },
-      { name: "Testing", level: 55 },
+      { name: "Git", level: 82 },
+      { name: "GitHub", level: 82 },
+      { name: "Microsoft Office", level: 75 },
+      { name: "Figma", level: 68 },
+      { name: "Postman", level: 75 },
+      { name: "VS Code", level: 85 },
     ],
   },
 ];
